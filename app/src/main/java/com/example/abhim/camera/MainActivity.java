@@ -10,8 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import java.net.URI;
-import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -60,14 +58,19 @@ public class MainActivity extends AppCompatActivity {
            ImageView imageView = (ImageView) findViewById(R.id.imageView);
            //Uri is the pat
            Uri u = data.getData();
-           imageView.setImageURI(u);
+           if (imageView != null) {
+               imageView.setImageURI(u);
+           }
        }
 
         if (requestCode==102)
         {
             ImageView imageView = (ImageView)findViewById(R.id.imageView);
             Bitmap bit = (Bitmap)data.getExtras().get("data");
-            imageView.setImageBitmap(bit);
+            if (imageView != null) {
+                imageView.setImageBitmap(bit);
+            }
+
         }
 
     }
